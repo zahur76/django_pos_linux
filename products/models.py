@@ -31,7 +31,7 @@ class Product(models.Model):
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
     subcategory = models.ForeignKey('subCategory', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
-    sku = models.CharField(max_length=254, null=False, blank=False)
+    sku = models.CharField(max_length=254, null=True, blank=True)
     has_sizes = models.BooleanField(default=False, null=True, blank=True)
     has_colour = models.BooleanField(default=False, null=True, blank=True)
     stock_available = models.IntegerField()
@@ -43,11 +43,8 @@ class Product(models.Model):
     
     def save(self, *args, **kwargs):
         """
-        Create SKU on save automatically
+        Create SKU on save 
         """
-
-        self.sku = f'{self.category}/{self.subcategory}-{self.id}-'+uuid.uuid4().hex.upper()
+        first_sku = self.category
+        self.sku = f'{first_sku.name[0]}/{self.subcategory}-'+(uuid.uuid4().hex.upper())[:8]
         super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.order_number
