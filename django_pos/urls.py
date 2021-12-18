@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include("home.urls")),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("admin/", admin.site.urls),
+    path("", include("home.urls")),
+    path("login/", include("login.urls")),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
