@@ -5,8 +5,16 @@ body, html {
     height: 100vh;
 }
 
+.bg {
+    background: rgba(0, 0, 0, 0.521);
+}
+
 nav a {
     text-decoration: none;   
+}
+
+.offcanvas a {
+    text-decoration: none;  
 }
 
 .content {    
@@ -36,7 +44,7 @@ nav a {
 }
 
 .modal-content {
-    background: rgba(0, 0, 0, 0.897);
+    background: rgba(0, 0, 0, 0.74);
 }
 
 .form-control {
