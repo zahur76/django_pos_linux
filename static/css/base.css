@@ -10,7 +10,7 @@ body, html {
     background-color: blueviolet;              
 }
 
-/* over */
+/* overlay */
 .overlay{
     background: black url('/media/loading.gif') no-repeat center center;
     opacity: 0.8;
@@ -21,4 +21,72 @@ body, html {
     left: 0; 
     position: fixed; 
     display: none;
+}
+
+/* login modal*/
+.login-modal {
+    width: 40%;
+    left: 30%;
+    top: 25%;
+}
+
+.modal-content {
+    background: rgba(0, 0, 0, 0.493);
+}
+
+.form-control {
+    height: 28px;
+}
+
+.append-eye {
+    border: 0px;
+    padding-bottom: 3px;
+}
+
+/* button */
+.button {
+    background-color: rgba(0, 0, 0, 0.712);
+    border: 1px solid white;
+    color: white;
+    border-radius: 0px;
+    padding: 5px;
+}
+
+/* Media screen */
+@media screen and (max-width: 992px){
+    .login-modal { 
+        width: 50%;      
+        left: 25%;        
+    }
+}
+
+@media screen and (max-width: 768px){
+    .login-modal { 
+        width: 60%;      
+        left: 20%;        
+    }
+
+    .form-control {
+        height: 24px;
+    }
+
+    .append-eye {
+        height: 24px;
+    }
+
+    .eye-icon {
+        bottom: 2px;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 2px;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .login-modal { 
+        width: 90%;      
+        left: 5%;        
+    }
 }

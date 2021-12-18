@@ -56,12 +56,12 @@
         
          <!-- login Modal -->    
          <div id="loginModal" class="modal login-modal">
-            <div class="modal-content mt-0 border-0 bg-secondary">                                     
+            <div class="modal-content mt-0 border-0">                                     
                 <div class="choose mb-2">
                     <h5 class="text-center text-dark modal-title">Enter username and password</h5> 
                     <h6 class="error-message text-danger text-center"></h6>                             
                 </div>
-                <div class="w-75 mx-auto mb-2 mb-sm-3">
+                <div class="mx-auto mb-2 mb-sm-3 w-75">
                     <form action="{% url 'login' %}" method="POST" id="login-form">
                         {% csrf_token %}
                         <div class="form-group mb-2">                      
@@ -71,11 +71,11 @@
                         <div class="input-group mb-2">
                             <input type="password" class="form-control rounded-0" name="password" id="password" placeholder="Password" autocomplete="on"/ required>
                             <div class="input-group-append">
-                              <button class="input-group-append append-eye bg-light"><i class="eye-icon btn m-0 p-0 fas fa-eye"></i></button>
+                              <button class="input-group-append append-eye bg-light my-auto"><i class="eye-icon btn m-0 p-0 fas fa-eye"></i></button>
                             </div>
                         </div>                                                    
-                        <button type="submit" class="btn btn-secondary text-light p-1">Submit</button>
-                        <button type="button" class="btn btn-secondary text-light close p-1">Close</button>
+                        <button type="submit" class="btn button">Submit</button>
+                        <button type="button" class="btn button close">Close</button>
                     </form>                                                     
                 </div> 
             </div>            
