@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}  
+    <link rel="stylesheet" href="{% static 'admin_control/css/home.css' %}">          
+{% endblock %}
+
+
+{% block content %} 
+    <h1>Admin Control</h1>
+{% endblock %}
+
+{% block extra_js %}              
+    <script src="{% static 'admin_control/js/home.js' %}" type="text/javascript"></script>
+{% endblock %}
