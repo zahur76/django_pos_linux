@@ -1,0 +1,7 @@
+.content {
+    background: rgb(255, 255, 255);
+}
+
+.fa-plus-square:hover {
+    color: rgb(99, 98, 98) !important;
+}

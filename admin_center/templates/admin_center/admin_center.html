@@ -7,7 +7,37 @@
 
 
 {% block content %} 
-    <h1 class="text-center">Admin Control</h1>        
+    <h1 class="text-center">Admin Control</h1>
+    <div class="row m-0 text-center">
+        <a href="#" class="col-6 col-md-4 col-lg-3 p-2">
+            <div class="admin-box p-2">
+                <div class="col-12">PRODUCT</div>
+                <div class="col-12 border-bottom border-secondary"><i class="fas fa-box-open"></i></div>
+                <div class="col-12 h6 text-start pt-2 ">Product Management</div>
+            </div>
+        </a>
+        <a href="{% url 'category' %}"class="col-6 col-md-4 col-lg-3 p-2">
+            <div class="admin-box p-2">
+                <div class="col-12">CATEGORY</div>
+                <div class="col-12 border-bottom border-secondary"><i class="fas fa-boxes"></i></div>
+                <div class="col-12 h6 text-start pt-2 ">Category Management</div>
+            </div>
+        </a>
+        <a href="#"class="col-6 col-md-4 col-lg-3 p-2">
+            <div class="admin-box p-2">
+                <div class="col-12">SUBCATEGORY</div>
+                <div class="col-12 border-bottom border-secondary"><i class="fas fa-th"></i></div>
+                <div class="col-12 h6 text-start pt-2 ">Subcategory Management</div>
+            </div>
+        </a>
+        <a href="#"class="col-6 col-md-4 col-lg-3 p-2">
+            <div class="admin-box p-2">
+                <div class="col-12">INVENTORY</div>
+                <div class="col-12 border-bottom border-secondary"><i class="fas fa-store"></i></div>
+                <div class="col-12 h6 text-start pt-2 ">Inventory Management</div>
+            </div>
+        </a>
+    </div>        
 {% endblock %}
 
 {% block extra_js %}              

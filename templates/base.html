@@ -53,10 +53,12 @@
                         </div>
                         <div class="offcanvas-body">                       
                         {% if request.get_full_path == "/admin_center/" %}
-                            <a href="{% url 'home' %}"class="p-2 text-light"><i class="fas fa-home"></i> Home</a></br>
-                        {% endif %} 
-                        <a href="{% url 'admin_center' %}" class="p-2 text-center my-auto text-light"><i class="fas fa-user"></i> Admin</a></br>
-                        <a href="{% url 'logout' %}" class="p-2 text-center my-auto text-light"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                            <a href="{% url 'home' %}"class="p-2 text-light"><i class="fas fa-home"></i>&nbsp;Home</a></br>
+                        {% endif %}
+                        {% if request.get_full_path != "/admin_center/" %} 
+                            <a href="{% url 'admin_center' %}" class="p-2 text-center my-auto text-light"><i class="fas fa-user"></i>&nbsp;&nbsp;Admin</a></br>
+                        {% endif %}
+                        <a href="{% url 'logout' %}" class="p-2 text-center my-auto text-light"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
                         </div>
                 </div>
             {% endif %}
