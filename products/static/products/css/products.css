@@ -2,6 +2,20 @@
     background: rgb(255, 255, 255);
 }
 
-.fa-plus-square:hover {
-    color: rgb(99, 98, 98) !important;
+.add-category-form-input {
+    width: 50%;
+}
+
+.add-category-button {
+    width: 50%;
+}
+
+@media screen and (max-width: 576px){
+    .add-category-form-input {
+        width: 75%;
+    }
+
+    .add-category-button {
+        width: 75%;
+    }
 }

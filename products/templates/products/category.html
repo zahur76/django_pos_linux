@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block extra_css %}  
     <link rel="stylesheet" href="{% static 'products/css/products.css' %}">          
@@ -8,17 +9,23 @@
 
 {% block content %}
     <a href="{% url 'admin_center' %}"class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
-    <h1 class="col-12 border-bottom border-secondary mb-2 p-2">Category 
-        <a href="#"><i class="text-dark fas fa-plus-square"></i>
-        </a>
-    </h1>
+    <h1 class="col-12 border-bottom border-secondary mb-2 p-2">My Categories</h1>
+    <div class="col-12 h4 p-2">Category <i class="fas fa-plus-square"></i></div>
+    <form id="add-category" class="mx-auto mt-3" action="{% url 'category' %}" method="POST">
+        {% csrf_token %}
+        {% crispy form %}
+        <div class="col-12 text-center">
+            <button class="btn button mt-1 mb-3 add-category-button" form="add-category" type="submit">submit</button>
+        </div>        
+    </form>
+    <div class="col-12 h4 p-2">Category <i class="fas fa-edit"></i></div>
     <div class="row m-0 mt-2">
         {% for category in categories %}
             <div class="col-1"></div>
             <div class="col-4 col-md-2 h4">
                 {{category.name}}
             </div>
-            <div class="col-2 h4"><a href="#"><i class="text-danger fas fa-trash-alt"></i></a></div>
+            <div class="col-2 h4"><a href="{% url 'category_delete' category_id=category.id %}"><i class="text-danger fas fa-trash-alt"></i></a></div>
             <div class="col-2 h4"><a href="#"><i class="text-info fas fa-edit"></i></a></div>
             <div class="col-3 col-md-5"></div>
             <div class="col-12 border-bottom border-secondary"></div>
