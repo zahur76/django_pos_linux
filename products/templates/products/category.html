@@ -26,12 +26,11 @@
                 {{category.name}}
             </div>
             <div class="col-2 h4"><a href="{% url 'category_delete' category_id=category.id %}"><i class="text-danger fas fa-trash-alt"></i></a></div>
-            <div class="col-2 h4"><a href="#"><i class="text-info fas fa-edit"></i></a></div>
+            <div class="col-2 h4" value={{category.id}}><a href="{% url 'category_edit' category_id=category.id %}"><i class="text-info fas fa-edit"></i></a></div>
             <div class="col-3 col-md-5"></div>
             <div class="col-12 border-bottom border-secondary"></div>
         {% endfor %}
-    </div>
-    
+    </div>      
 {% endblock %}
 
 {% block extra_js %}              

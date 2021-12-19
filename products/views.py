@@ -43,3 +43,31 @@ def category_delete(request, category_id):
     category.delete()
     
     return redirect(reverse("category"))
+
+
+def category_edit(request, category_id):
+    """A view to delete category"""
+
+    if not request.user.is_superuser:
+        messages.error(request, "Permision Denied!.")
+        return redirect(reverse("home"))
+
+    category = get_object_or_404(Category, id=category_id)
+    if request.method == "POST":
+        form = add_categoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Category Updated!")
+            return redirect(reverse("category"))
+        messages.error(request, "Error, Please try again!")
+    else:
+        form = add_categoryForm(instance=category)
+
+        context = {
+            'category': category,
+            'form': form,
+        }
+
+        return render(request, "products/edit_category.html", context)    
+    
+    

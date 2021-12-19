@@ -10,6 +10,18 @@
     width: 50%;
 }
 
+.add-category-modal {
+    width: 50%;
+    left: 25%;
+    top: 30%;
+}
+
+.modal-content {
+    background: rgb(240, 240, 240);
+    border: 1px solid rgb(197, 197, 197) !important;
+    border-radius: 0;
+}
+
 @media screen and (max-width: 576px){
     .add-category-form-input {
         width: 75%;
@@ -17,5 +29,10 @@
 
     .add-category-button {
         width: 75%;
+    }
+    
+    .add-category-modal {
+        width: 75%;
+        left: 12.5%;
     }
 }

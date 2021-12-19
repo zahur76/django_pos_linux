@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
-    $(".login").click(function(){ 
-        console.log('zahur')       
+    $(".login").click(function(){       
         $("#loginModal").show();                          
     });
     
