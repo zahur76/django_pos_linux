@@ -16,6 +16,14 @@
     top: 30%;
 }
 
+a {
+    text-decoration: none;
+}
+
+.add-subcategory:hover {
+    color: rgb(99, 99, 99) !important;
+}
+
 .modal-content {
     background: rgb(240, 240, 240);
     border: 1px solid rgb(197, 197, 197) !important;

@@ -20,7 +20,7 @@ class subCategory(models.Model):
 
     name = models.CharField(max_length=254)
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL, related_name='cat')
-    # category.cat.all: will return all subCategory for that a specific category
+    # category.cat.all: will return all subCategory for that specific category
 
     # Will return the actual name in admin fields
     def __str__(self):
@@ -28,7 +28,7 @@ class subCategory(models.Model):
 
 class Product(models.Model):
 
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL, related_name="prod")
     subcategory = models.ForeignKey('subCategory', null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=254)
     sku = models.CharField(max_length=254, null=True, blank=True)
