@@ -101,9 +101,15 @@ def add_subcategory(request, category_name):
 
     if request.method == "POST":
         category = get_object_or_404(Category, name=category_name)
-        name = request.POST["name"]
-        subcategory = subCategory.objects.create(name=name, category=category)
-        return redirect(reverse("subcategory"))
+        name = request.POST["name"].lower()
+        try:
+            check_subcategory = get_object_or_404(subCategory, name=name, category=category)
+            messages.error(request, "Subcategory already exists!")
+            return redirect(reverse("subcategory"))
+        except:
+            subcategory = subCategory.objects.create(name=name, category=category)
+            messages.success(request, "Subcategory Added!")
+            return redirect(reverse("subcategory"))
     form = add_subcategoryForm()
     context = {
         "category": category,
