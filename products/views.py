@@ -1,7 +1,10 @@
-from django.shortcuts import get_object_or_404, render, redirect, reverse
-from .models import Category, subCategory
-from .forms import add_categoryForm, add_subcategoryForm
 from django.contrib import messages
+from django.db.models import Q
+from django.shortcuts import get_object_or_404, redirect, render, reverse
+
+from .forms import add_categoryForm, add_subcategoryForm
+from .models import Category, subCategory, Product
+
 
 # Create your views here
 def category(request):
@@ -21,10 +24,10 @@ def category(request):
 
     categories = Category.objects.all()
 
-    form = add_categoryForm()        
+    form = add_categoryForm()
 
     context = {
-        'categories': categories,
+        "categories": categories,
         "form": form,
     }
 
@@ -37,11 +40,11 @@ def category_delete(request, category_id):
     if not request.user.is_superuser:
         messages.error(request, "Permision Denied!.")
         return redirect(reverse("home"))
-    
+
     category = get_object_or_404(Category, id=category_id)
 
     category.delete()
-    
+
     return redirect(reverse("category"))
 
 
@@ -64,8 +67,8 @@ def category_edit(request, category_id):
         form = add_categoryForm(instance=category)
 
         context = {
-            'category': category,
-            'form': form,
+            "category": category,
+            "form": form,
         }
 
         return render(request, "products/edit_category.html", context)
@@ -78,11 +81,10 @@ def subcategory(request):
         messages.error(request, "Permision Denied!.")
         return redirect(reverse("home"))
 
-    categories = Category.objects.all()      
+    categories = Category.objects.all()
 
     context = {
-        'categories': categories,
-        
+        "categories": categories,
     }
 
     return render(request, "products/subcategory.html", context)
@@ -96,19 +98,16 @@ def add_subcategory(request, category_name):
         return redirect(reverse("home"))
 
     category = get_object_or_404(Category, name=category_name)
-    
+
     if request.method == "POST":
         category = get_object_or_404(Category, name=category_name)
-        name = request.POST['name']
-        subcategory = subCategory.objects.create(
-            name=name,
-            category=category
-        )       
+        name = request.POST["name"]
+        subcategory = subCategory.objects.create(name=name, category=category)
         return redirect(reverse("subcategory"))
     form = add_subcategoryForm()
     context = {
-        'category': category,
-        'form': form,
+        "category": category,
+        "form": form,
     }
 
     return render(request, "products/add_subcategory.html", context)
@@ -134,15 +133,41 @@ def edit_subcategory(request, subcategory_id):
             messages.success(request, "Subcategory Updated!")
             return redirect(reverse("subcategory"))
         messages.error(request, "Error, Please try again!")
-    
-    
+
     form = add_categoryForm(instance=subcategory)
 
     context = {
-        'form': form,
-        'subcategory': subcategory,
+        "form": form,
+        "subcategory": subcategory,
     }
 
     return render(request, "products/edit_subcategory.html", context)
-    
-    
+
+
+def products(request):
+    """A view to Manage products"""
+
+    if not request.user.is_superuser:
+        messages.error(request, "Permision Denied!.")
+        return redirect(reverse("home"))
+
+    if "q" in request.GET:
+        query = request.GET["q"]
+        if not query:
+            return redirect(reverse("products"))
+        else:
+            all_products = Product.objects.all()
+            queries = Q(name__icontains=query) | Q(category__name__icontains=query)
+            query_products = all_products.filter(queries)
+            context = {
+                "products": query_products,
+            }
+            return render(request, "products/products.html", context)
+
+    products = Product.objects.all()
+
+    context = {
+        'products': products,
+    }
+
+    return render(request, "products/products.html", context)

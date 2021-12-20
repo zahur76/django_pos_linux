@@ -13,11 +13,11 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            print('login ok')
+            print("login ok")
             messages.success(request, "Login Successful!")
             return redirect(reverse("home"))
         else:
-            print('invalid login')
+            print("invalid login")
             # Return an 'invalid login' error message.
             messages.error(request, "Login Unsuccessful!")
             return redirect(reverse("home"))

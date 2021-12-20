@@ -30,7 +30,7 @@ class add_categoryForm(forms.ModelForm):
 class add_subcategoryForm(forms.ModelForm):
     class Meta:
         model = Category
-        exclude = ('category',)
+        exclude = ("category",)
 
     def __init__(self, *args, **kwargs):
         """
@@ -49,4 +49,3 @@ class add_subcategoryForm(forms.ModelForm):
                 "class"
             ] = "border-dark rounded-0 mx-auto add-category-form-input m-1"
             self.fields[field].label = False
-

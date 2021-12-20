@@ -30,6 +30,38 @@ a {
     border-radius: 0;
 }
 
+.box {
+    background: rgb(108, 108, 245);
+    color: white;
+    padding: 5px !important;
+}
+
+.bg-products {
+    background:rgb(240, 239, 239);
+}
+
+.form-control {
+    height: 34px;
+}
+
+@media screen and (min-width: 992px){
+    .product-form {
+        width: 35% !important;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .product-form {
+        width: 35% !important;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .product-form {
+        width: 50% !important;
+    }
+}
+
 @media screen and (max-width: 576px){
     .add-category-form-input {
         width: 75%;
@@ -42,5 +74,9 @@ a {
     .add-category-modal {
         width: 75%;
         left: 12.5%;
+    }
+
+    .product-form {
+        width: 90% !important;
     }
 }

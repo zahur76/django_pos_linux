@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block extra_css %}  
+    <link rel="stylesheet" href="{% static 'products/css/products.css' %}">          
+{% endblock %}
+
+
+{% block content %}
+    <a href="{% url 'admin_center' %}" class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
+    <h1 class="col-12 border-bottom border-secondary p-2">My Products</h1>
+    <form class="p-2 product-form" action="{% url 'products' %}" method="GET" id="productForm">
+        {% csrf_token %}
+        <div class="input-group">
+            <input type="search" class="form-control custom-select rounded-0 border-2 border-dark" name="q" placeholder="Search Products/Category">
+            <button class="button input-group-append ml-auto" type="submit"><div class="text">Search</div></button>
+        </div>                
+    </form> 
+    <div class="col-12 h4 p-2">Product <i class="fas fa-plus-square"></i></div>
+    <div class="row m-0 text-center">
+        {% for product in products %}            
+            <div class="col-12 bg-products p-1 text-start h3"><i class="h4 text-danger fas fa-trash-alt p-1"></i><i class="text-info fas fa-edit p-1"></i> {{ product.name }}</div>
+            <div class="col-6 col-md-3 h6 text-end">Category</div><div class="h6 col-6 col-md-9 text-start">{{ product.category}}</div>
+            <div class="col-6 col-md-3 h6 text-end">Subcategory</div><div class="h6 col-6 col-md-9 text-start">{{ product.subcategory }}</div>
+            <div class="col-6 col-md-3 h6 text-end">SKU</div><div class="h6 col-6 col-md-9 text-start">{{ product.sku }}</div>
+            {% if product.has_size %}
+                <div class="col-6 col-md-3 h6 text-end">Has Size</div><div class="h6 col-6 col-md-9 text-start">True</div>
+            {% else %}
+                <div class="col-6 col-md-3 h6 text-end">Has Size</div><div class="h6 col-6 col-md-9 text-start">False</div>
+            {% endif %}
+            {% if product.has_vat %}
+                <div class="col-6 col-md-3 h6 text-end">Has Vat</div><div class="h6 col-6 col-md-9 text-start">True</div>
+            {% else %}
+                <div class="col-6 col-md-3 h6 text-end">Has Vat</div><div class="h6 col-6 col-md-9 text-start">False</div>
+            {% endif %}
+            {% if product.has_colour %}
+                <div class="col-6 col-md-3 h6 text-end">Has Colour</div><div class="h6 col-6 col-md-9 text-start">True</div>
+            {% else %}
+                <div class="col-6 col-md-3 h6 text-end">Has Colour</div><div class="h6 col-6 col-md-9 text-start">False</div>
+            {% endif %}
+                <div class="col-6 col-md-3 mb-2 h6 text-end">Stock</div><div class="h6 col-6 col-md-9 text-start mb-2">{{ product.stock_available }}</div>
+        {% endfor %}
+    </div>         
+{% endblock %}
+
+{% block extra_js %}              
+    <script src="{% static 'products/js/products.js' %}" type="text/javascript"></script>
+{% endblock %}

@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.shortcuts import redirect, render, reverse
+
 
 # Create your views here
 def admin_center(request):
@@ -10,4 +11,3 @@ def admin_center(request):
         return redirect(reverse("home"))
 
     return render(request, "admin_center/admin_center.html")
-
