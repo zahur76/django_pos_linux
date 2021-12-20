@@ -27,4 +27,5 @@ urlpatterns = [
         name="edit_subcategory",
     ),
     path("products", views.products, name="products"),
+    path("add_product/<int:category_id>", views.add_product, name="add_product"),
 ]

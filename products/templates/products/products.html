@@ -16,10 +16,14 @@
             <input type="search" class="form-control custom-select rounded-0 border-2 border-dark" name="q" placeholder="Search Products/Category">
             <button class="button input-group-append ml-auto" type="submit"><div class="text">Search</div></button>
         </div>                
-    </form> 
-    <div class="col-12 h4 p-2">Product <i class="fas fa-plus-square"></i></div>
+    </form>    
+    <div class="col-12 h4 p-2 border-bottom border-secondary">Add Product</div>
+    {% for category in categories %}
+        <div class="col-12 p-2 h5"><a href="{% url 'add_product' category_id=category.id %}" class="text-dark add-product-button"><i class="h5 fas fa-plus-square"></i> {{ category }}</a></div>
+    {% endfor %}   
+    <div class="col-12 h4 p-2">Products</div>
     <div class="row m-0 text-center">
-        {% for product in products %}            
+        {% for product in products %}          
             <div class="col-12 bg-products p-1 text-start h3"><i class="h4 text-danger fas fa-trash-alt p-1"></i><i class="text-info fas fa-edit p-1"></i> {{ product.name }}</div>
             <div class="col-6 col-md-3 h6 text-end">Category</div><div class="h6 col-6 col-md-9 text-start">{{ product.category}}</div>
             <div class="col-6 col-md-3 h6 text-end">Subcategory</div><div class="h6 col-6 col-md-9 text-start">{{ product.subcategory }}</div>

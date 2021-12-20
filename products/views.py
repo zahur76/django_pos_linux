@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .forms import add_categoryForm, add_subcategoryForm
+from .forms import add_categoryForm, add_subcategoryForm, add_productForm
 from .models import Category, subCategory, Product
 
 
@@ -163,11 +163,48 @@ def products(request):
                 "products": query_products,
             }
             return render(request, "products/products.html", context)
+    
+    categories = Category.objects.all()
 
     products = Product.objects.all()
 
     context = {
         'products': products,
+        'categories': categories,
     }
 
     return render(request, "products/products.html", context)
+
+
+def add_product(request, category_id):
+    """A view add Product"""
+
+    if not request.user.is_superuser:
+        messages.error(request, "Permision Denied!.")
+        return redirect(reverse("home"))
+    
+    category = get_object_or_404(Category, id=category_id)
+
+    subcategories = subCategory.objects.filter(category=category_id)
+
+    if request.method == "POST":
+        form = add_productForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.category = category
+            new_form.save()
+            messages.success(request, "Product added!")
+            return redirect(reverse("products"))
+        messages.error(request, "Error, try again!")
+        return redirect(reverse("products")) 
+    
+    form = add_productForm()
+
+    context= {
+        'form': form,
+        'category': category, 
+        'subcategories': subcategories,
+        }
+
+
+    return render(request, "products/add_product.html", context)

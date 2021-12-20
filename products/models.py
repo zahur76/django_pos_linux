@@ -43,11 +43,11 @@ class Product(models.Model):
     )
     name = models.CharField(max_length=254)
     sku = models.CharField(max_length=254, null=True, blank=True)
-    has_sizes = models.BooleanField(default=False, null=True, blank=True)
-    has_colour = models.BooleanField(default=False, null=True, blank=True)
-    stock_available = models.IntegerField()
-    has_vat = models.BooleanField(default=False, null=True, blank=True)
-    image = models.ImageField(null=True, blank=True)
+    stock_available = models.IntegerField()   
+    has_sizes = models.BooleanField(default=False, null=False, blank=False)
+    has_colour = models.BooleanField(default=False, null=False, blank=False)
+    has_vat = models.BooleanField(default=False, null=False, blank=False)     
+    image = models.ImageField(null=False, blank=False)
 
     def __str__(self):
         return self.name
