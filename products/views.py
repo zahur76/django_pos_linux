@@ -17,9 +17,17 @@ def category(request):
     if request.method == "POST":
         form = add_categoryForm(request.POST)
         if form.is_valid():
-            form.save()
-            messages.success(request, "Category Added!")
-            return redirect(reverse("category"))
+            try:
+                print(request.POST['name'].lower())
+                category = get_object_or_404(Category, name=request.POST['name'].lower())
+                messages.error(request, "Category Already Exists!")
+                return redirect(reverse("category"))
+            except:
+                new_form = form.save(commit=False)
+                new_form.name = request.POST['name'].lower()
+                new_form.save()
+                messages.success(request, "Category Added!")
+                return redirect(reverse("category"))
         messages.error(request, "Error, Please try again!")
 
     categories = Category.objects.all()
@@ -141,7 +149,9 @@ def edit_subcategory(request, subcategory_id):
     if request.method == "POST":
         form = add_subcategoryForm(request.POST, instance=subcategory)
         if form.is_valid():
-            form.save()
+            new_form = form.save(commit=False)
+            new_form.name = request.POST["name"].lower()
+            new_form.save()
             messages.success(request, "Subcategory Updated!")
             return redirect(reverse("subcategory"))
         messages.error(request, "Error, Please try again!")
