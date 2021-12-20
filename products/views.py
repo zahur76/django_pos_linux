@@ -115,6 +115,9 @@ def add_subcategory(request, category_name):
 
 def delete_subcategory(request, subcategory_id):
     """A view to delete Subcategory"""
+    if not request.user.is_superuser:
+        messages.error(request, "Permision Denied!.")
+        return redirect(reverse("home"))
 
     subcategory = get_object_or_404(subCategory, id=subcategory_id)
     subcategory.delete()
@@ -124,6 +127,9 @@ def delete_subcategory(request, subcategory_id):
 
 def edit_subcategory(request, subcategory_id):
     """A view to edit Subcategory"""
+    if not request.user.is_superuser:
+        messages.error(request, "Permision Denied!.")
+        return redirect(reverse("home"))
 
     subcategory = get_object_or_404(subCategory, id=subcategory_id)
     if request.method == "POST":
@@ -185,8 +191,6 @@ def add_product(request, category_id):
     
     category = get_object_or_404(Category, id=category_id)
 
-    subcategories = subCategory.objects.filter(category=category_id)
-
     if request.method == "POST":
         form = add_productForm(request.POST, request.FILES)
         if form.is_valid():
@@ -202,18 +206,49 @@ def add_product(request, category_id):
 
     context= {
         'form': form,
-        'category': category, 
-        'subcategories': subcategories,
-        }
-
-
+        'category': category,
+       }
+    
     return render(request, "products/add_product.html", context)
 
 
 def delete_product(request, product_id):
     """A view to delete Subcategory"""
+    if not request.user.is_superuser:
+        messages.error(request, "Permision Denied!.")
+        return redirect(reverse("home"))
 
     product = get_object_or_404(Product, id=product_id)
     product.delete()
     messages.success(request, "Product Deleted!")
     return redirect(reverse("products"))
+
+
+def update_product(request, product_id):
+    """A view to delete Subcategory"""
+    if not request.user.is_superuser:
+        messages.error(request, "Permision Denied!.")
+        return redirect(reverse("home"))
+
+    product = get_object_or_404(Product, id=product_id)
+    category = get_object_or_404(Category, id=product.category.id)
+
+    if request.method == "POST":
+        form = add_productForm(request.POST, request.FILES , instance=product)
+        if form.is_valid():
+            new_form = form.save(commit=False)
+            new_form.category = category
+            new_form.save()
+            messages.success(request, "Product updated!")
+            return redirect(reverse("products"))
+        messages.error(request, "Error, try again!")
+        return redirect(reverse("products"))
+
+    form = add_productForm(instance=product)
+    
+    context = {
+        'product': product,
+        'form': form,
+        'category': category,
+    }
+    return render(request, "products/update_product.html", context)

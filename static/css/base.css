@@ -19,8 +19,8 @@ nav a {
 
 .content {    
     flex: 1;
-    background: rgb(230, 227, 227);
-
+    background-image: url('../../media/store.jpg');
+    background-size: cover;
 }
 
 /* overlay */
