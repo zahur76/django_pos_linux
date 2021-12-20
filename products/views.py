@@ -208,3 +208,12 @@ def add_product(request, category_id):
 
 
     return render(request, "products/add_product.html", context)
+
+
+def delete_product(request, product_id):
+    """A view to delete Subcategory"""
+
+    product = get_object_or_404(Product, id=product_id)
+    product.delete()
+    messages.success(request, "Product Deleted!")
+    return redirect(reverse("products"))
