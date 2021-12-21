@@ -9,7 +9,7 @@
 
 {% block content %}
     <a href="{% url 'admin_center' %}" class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
-    <h1 class="col-12 border-bottom border-secondary p-2">My Products</h1>
+    <h1 class="col-12 border-bottom border-secondary p-2 bg-danger">My Products</h1>
     <form class="p-2 product-form" action="{% url 'products' %}" method="GET" id="productForm">
         {% csrf_token %}
         <div class="input-group">
@@ -17,14 +17,14 @@
             <button class="button input-group-append ml-auto" type="submit"><div class="text">Search</div></button>
         </div>                
     </form>    
-    <div class="col-12 h4 p-2 border-bottom border-secondary">Add Product</div>
+    <div class="col-12 h4 p-2 border-bottom border-secondary bg-category">Add Product</div>
     {% for category in categories %}
-        <div class="col-12 p-2 h5"><a href="{% url 'add_product' category_id=category.id %}" class="text-dark add-product-button"><i class="h5 fas fa-plus-square"></i> {{ category }}</a></div>
+        <div class="col-12 p-2 h5 text"><a href="{% url 'add_product' category_id=category.id %}" class="text-dark add-product-button"><i class="h5 fas fa-plus-square"></i> {{ category }}</a></div>
     {% endfor %}   
-    <div class="col-12 h4 p-2 border-bottom border-secondary">Products</div>
+    <div class="col-12 h4 p-2 border-bottom border-secondary bg-category">Products</div>
     <div class="row m-0 text-center">
         {% for product in products %}          
-            <div class="col-12 bg-products p-1 text-start h3"><a href="{% url 'delete_product' product_id=product.id %}"><i class="h4 text-danger fas fa-trash-alt p-1"></i></a><a href="{% url 'update_product' product_id=product.id %}"><i class="text-info fas fa-edit p-1"></i></a> {{ product.name }}</div>
+            <div class="col-12 bg-warning p-1 text-start h3"><a href="{% url 'delete_product' product_id=product.id %}"><i class="h4 text-danger fas fa-trash-alt p-1"></i></a><a href="{% url 'update_product' product_id=product.id %}"><i class="text-info fas fa-edit p-1"></i></a> {{ product.name }}</div>
             <div class="col-6 col-md-3 h6 text-end">Category</div><div class="h6 col-6 col-md-9 text-start">{{ product.category}}</div>
             <div class="col-6 col-md-3 h6 text-end">Subcategory</div><div class="h6 col-6 col-md-9 text-start">{{ product.subcategory }}</div>
             <div class="col-6 col-md-3 h6 text-end">SKU</div><div class="h6 col-6 col-md-9 text-start">{{ product.sku }}</div>

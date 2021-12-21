@@ -6,23 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('products', '0003_alter_product_category'),
+        ("products", "0003_alter_product_category"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='has_colour',
+            model_name="product",
+            name="has_colour",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='has_sizes',
+            model_name="product",
+            name="has_sizes",
             field=models.BooleanField(default=False),
         ),
         migrations.AlterField(
-            model_name='product',
-            name='has_vat',
+            model_name="product",
+            name="has_vat",
             field=models.BooleanField(default=False),
         ),
     ]

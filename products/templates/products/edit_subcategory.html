@@ -9,7 +9,7 @@
 
 {% block content %}
     <a href="{% url 'subcategory' %}"class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
-    <h1 class="col-12 border-bottom border-secondary mb-2 p-2">My Subcategories/{{category.name}}</h1>
+    <h1 class="col-12 border-bottom border-secondary bg-category mb-2 p-2">My Subcategories/{{subcategory.category.name}}</h1>
     <form id="edit-subcategory" class="mx-auto mt-3" action="{% url 'edit_subcategory' subcategory_id=subcategory.id %}" method="POST">
         {% csrf_token %}
         {% crispy form %}

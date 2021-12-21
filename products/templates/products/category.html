@@ -9,8 +9,8 @@
 
 {% block content %}
     <a href="{% url 'admin_center' %}"class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
-    <h1 class="col-12 border-bottom border-secondary mb-2 p-2">My Categories</h1>
-    <div class="col-12 h4 p-2">Category <i class="fas fa-plus-square"></i></div>
+    <h1 class="col-12 border-bottom border-secondary mb-2 p-2 bg-danger">My Categories</h1>
+    <div class="col-12 h4 p-2 bg-category">Category <i class="fas fa-plus-square"></i></div>
     <form id="add-category" class="mx-auto mt-3" action="{% url 'category' %}" method="POST">
         {% csrf_token %}
         {% crispy form %}
@@ -18,7 +18,7 @@
             <button class="btn button mt-1 mb-3 add-category-button" form="add-category" type="submit">submit</button>
         </div>        
     </form>
-    <div class="col-12 h4 p-2">Category <i class="fas fa-edit"></i></div>
+    <div class="col-12 h4 p-2 bg-category">Category <i class="fas fa-edit"></i></div>
     <div class="row m-0 mt-2">
         {% for category in categories %}
             <div class="col-1"></div>

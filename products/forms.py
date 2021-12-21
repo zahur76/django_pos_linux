@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Category, subCategory, Product
+from .models import Category, Product, subCategory
 
 
 class add_categoryForm(forms.ModelForm):
@@ -54,7 +54,10 @@ class add_subcategoryForm(forms.ModelForm):
 class add_productForm(forms.ModelForm):
     class Meta:
         model = Product
-        exclude = ("sku", "category", )
+        exclude = (
+            "sku",
+            "category",
+        )
 
     def __init__(self, *args, **kwargs):
         """
@@ -72,7 +75,7 @@ class add_productForm(forms.ModelForm):
             "image": "Image",
         }
 
-        self.fields['subcategory'].widget.attrs['autofocus'] = True
+        self.fields["subcategory"].widget.attrs["autofocus"] = True
         for field in self.fields:
             if field != "category" and field != "subcategory":
                 self.fields[field].widget.attrs["placeholder"] = placeholders[field]

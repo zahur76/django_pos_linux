@@ -9,7 +9,7 @@
 
 {% block content %}
     <a href="{% url 'products' %}"class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
-    <h1 class="col-12 border-bottom border-secondary mb-2 p-2">Add Product/{{ category.name }}</h1>
+    <h1 class="col-12 border-bottom border-secondary bg-category mb-2 p-2">Add Product/{{ category.name }}</h1>
     <div class="add-product-form m-2 mx-auto mt-3 border border-secondary p-3 bg-product-form">
         <form id="add-product" action="{% url 'add_product' category_id=category.id %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}

@@ -2,8 +2,8 @@ from django.contrib import messages
 from django.db.models import Q
 from django.shortcuts import get_object_or_404, redirect, render, reverse
 
-from .forms import add_categoryForm, add_subcategoryForm, add_productForm
-from .models import Category, subCategory, Product
+from .forms import add_categoryForm, add_productForm, add_subcategoryForm
+from .models import Category, Product, subCategory
 
 
 # Create your views here
@@ -18,13 +18,15 @@ def category(request):
         form = add_categoryForm(request.POST)
         if form.is_valid():
             try:
-                print(request.POST['name'].lower())
-                category = get_object_or_404(Category, name=request.POST['name'].lower())
+                print(request.POST["name"].lower())
+                category = get_object_or_404(
+                    Category, name=request.POST["name"].lower()
+                )
                 messages.error(request, "Category Already Exists!")
                 return redirect(reverse("category"))
             except:
                 new_form = form.save(commit=False)
-                new_form.name = request.POST['name'].lower()
+                new_form.name = request.POST["name"].lower()
                 new_form.save()
                 messages.success(request, "Category Added!")
                 return redirect(reverse("category"))
@@ -52,7 +54,7 @@ def category_delete(request, category_id):
     category = get_object_or_404(Category, id=category_id)
 
     category.delete()
-
+    messages.success(request, "Category Deleted!")
     return redirect(reverse("category"))
 
 
@@ -111,7 +113,9 @@ def add_subcategory(request, category_name):
         category = get_object_or_404(Category, name=category_name)
         name = request.POST["name"].lower()
         try:
-            check_subcategory = get_object_or_404(subCategory, name=name, category=category)
+            check_subcategory = get_object_or_404(
+                subCategory, name=name, category=category
+            )
             messages.error(request, "Subcategory already exists!")
             return redirect(reverse("subcategory"))
         except:
@@ -185,14 +189,14 @@ def products(request):
                 "products": query_products,
             }
             return render(request, "products/products.html", context)
-    
+
     categories = Category.objects.all()
 
     products = Product.objects.all()
 
     context = {
-        'products': products,
-        'categories': categories,
+        "products": products,
+        "categories": categories,
     }
 
     return render(request, "products/products.html", context)
@@ -204,7 +208,7 @@ def add_product(request, category_id):
     if not request.user.is_superuser:
         messages.error(request, "Permision Denied!.")
         return redirect(reverse("home"))
-    
+
     category = get_object_or_404(Category, id=category_id)
 
     if request.method == "POST":
@@ -216,15 +220,15 @@ def add_product(request, category_id):
             messages.success(request, "Product added!")
             return redirect(reverse("products"))
         messages.error(request, "Error, try again!")
-        return redirect(reverse("products")) 
-    
+        return redirect(reverse("products"))
+
     form = add_productForm()
 
-    context= {
-        'form': form,
-        'category': category,
-       }
-    
+    context = {
+        "form": form,
+        "category": category,
+    }
+
     return render(request, "products/add_product.html", context)
 
 
@@ -250,7 +254,7 @@ def update_product(request, product_id):
     category = get_object_or_404(Category, id=product.category.id)
 
     if request.method == "POST":
-        form = add_productForm(request.POST, request.FILES , instance=product)
+        form = add_productForm(request.POST, request.FILES, instance=product)
         if form.is_valid():
             new_form = form.save(commit=False)
             new_form.category = category
@@ -261,10 +265,10 @@ def update_product(request, product_id):
         return redirect(reverse("products"))
 
     form = add_productForm(instance=product)
-    
+
     context = {
-        'product': product,
-        'form': form,
-        'category': category,
+        "product": product,
+        "form": form,
+        "category": category,
     }
     return render(request, "products/update_product.html", context)

@@ -23,5 +23,17 @@ $(document).ready(function(){
           input.attr("type", "password");
         }
     });
+
+    // language dropdown
+    $('#dropdownMenuButton').click(function(){
+        console.log('zahur')
+        $('.language-menu').toggleClass("style");
+        let myClass = $('#language').attr("class");
+        if(myClass==="language-menu style"){
+            $("#language").attr('style', "visibility:visible")
+        }else{
+            $("#language").attr('style', "visibility:hidden")
+        }
+    })
           
 });

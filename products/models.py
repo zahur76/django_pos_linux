@@ -43,10 +43,10 @@ class Product(models.Model):
     )
     name = models.CharField(max_length=254)
     sku = models.CharField(max_length=254, null=True, blank=True)
-    stock_available = models.IntegerField()   
+    stock_available = models.IntegerField()
     has_sizes = models.BooleanField(default=False, null=False, blank=False)
     has_colour = models.BooleanField(default=False, null=False, blank=False)
-    has_vat = models.BooleanField(default=False, null=False, blank=False)     
+    has_vat = models.BooleanField(default=False, null=False, blank=False)
     image = models.ImageField(null=False, blank=False)
 
     def __str__(self):
@@ -59,6 +59,7 @@ class Product(models.Model):
         first_sku = self.category
         second_sku = self.subcategory
         self.sku = (
-            f"{first_sku.name[0]}/{second_sku.name[0]}-" + (uuid.uuid4().hex.upper())[:8]
+            f"{first_sku.name[0]}/{second_sku.name[0]}-"
+            + (uuid.uuid4().hex.upper())[:8]
         )
         super().save(*args, **kwargs)

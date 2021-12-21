@@ -11,30 +11,46 @@
     <div class="row m-0 text-center">
         <a href="{% url 'products' %}" class="col-6 col-md-4 col-lg-3 p-2">
             <div class="admin-box p-2">
-                <div class="col-12">PRODUCT</div>
+                {% if active|stringformat:'s' == 'en' %}
+                    <div class="col-12">PRODUCT</div>
+                {% else %}
+                    <div class="col-12">PRODUIT</div>
+                {% endif %}
                 <div class="col-12 border-bottom border-secondary"><i class="fas fa-box-open"></i></div>
                 <div class="col-12 h6 text-start pt-2 admin-footer">Product</br>Management</div>
             </div>
         </a>
         <a href="{% url 'category' %}"class="col-6 col-md-4 col-lg-3 p-2">
             <div class="admin-box p-2">
-                <div class="col-12">CATEGORY</div>
+                {% if active|stringformat:'s' == 'en' %}
+                    <div class="col-12">CATEGORY</div>
+                {% else %}
+                    <div class="col-12">CATEGORIE</div>
+                {% endif %}
                 <div class="col-12 border-bottom border-secondary"><i class="fas fa-boxes"></i></div>
                 <div class="col-12 h6 text-start pt-2 admin-footer">Category</br>Management</div>
             </div>
         </a>
         <a href="{% url 'subcategory' %}"class="col-6 col-md-4 col-lg-3 p-2">
             <div class="admin-box p-2">
-                <div class="col-12">SUBCATEGORY</div>
+                {% if active|stringformat:'s' == 'en' %}
+                    <div class="col-12">SUBCATEGORY</div>
+                {% else %}
+                    <div class="col-12">SOUS-CATEGORIE</div>
+                {% endif %}
                 <div class="col-12 border-bottom border-secondary"><i class="fas fa-th"></i></div>
                 <div class="col-12 h6 text-start pt-2 admin-footer">Subcategory</br>Management</div>
             </div>
         </a>
-        <a href="#"class="col-6 col-md-4 col-lg-3 p-2">
+        <a href="{% url 'translate' %}"class="col-6 col-md-4 col-lg-3 p-2">
             <div class="admin-box p-2">
-                <div class="col-12">INVENTORY</div>
+                {% if active|stringformat:'s' == 'en' %}
+                    <div class="col-12">LANGUAGE</div>
+                {% else %}
+                    <div class="col-12">LANGUE</div>
+                {% endif %}
                 <div class="col-12 border-bottom border-secondary"><i class="fas fa-store"></i></div>
-                <div class="col-12 h6 text-start pt-2 admin-footer">Inventory</br>Management</div>
+                <div class="col-12 h6 text-start pt-2 admin-footer">Language</br>Management</div>
             </div>
         </a>
     </div>        

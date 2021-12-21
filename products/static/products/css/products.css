@@ -40,6 +40,10 @@ a {
     background:rgb(240, 239, 239);
 }
 
+.bg-category {
+    background: rgb(108, 108, 245); 
+}
+
 .form-control {
     height: 34px;
 }

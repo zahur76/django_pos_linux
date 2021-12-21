@@ -28,6 +28,10 @@ urlpatterns = [
     ),
     path("products", views.products, name="products"),
     path("add_product/<int:category_id>", views.add_product, name="add_product"),
-    path("delete_product/<int:product_id>", views.delete_product, name="delete_product"),
-    path("update_product/<int:product_id>", views.update_product, name="update_product"),
+    path(
+        "delete_product/<int:product_id>", views.delete_product, name="delete_product"
+    ),
+    path(
+        "update_product/<int:product_id>", views.update_product, name="update_product"
+    ),
 ]

@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!doctype html>
 <html lang="en">
@@ -12,21 +13,55 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/base.css' %}">        
         {% block extra_css %}                        
-        {% endblock %}       
+        {% endblock %} 
 
-        
         <title>Django-POS</title>
     </head>
     <body>        
         <nav class="row m-0 bg-dark">
             <div class="d-none d-md-block col-md-3"></div>                    
-            <div class="col-9 col-md-6 h1 text-center">
-                <a class="text-light logo" href="{% url 'home' %}">POS</a>
+            <div class="col-8 col-md-6 h1 text-center">
+                {% if active|stringformat:'s' == 'en' %}
+                    <a class="text-light logo" href="{% url 'home' %}">POINT OF SALES</a>
+                {% else %}
+                    <a class="text-light logo" href="{% url 'home' %}">POINTE DE VENTE</a>
+                {% endif %}
             </div>
             {% if request.user.is_superuser %}
-                <a class="text-light logo col-3 my-auto text-end" data-bs-toggle="offcanvas" href="#offcanvasExample" href="{% url 'home' %}">Menu</a>
+                <div class="col-4 col-md-3 text-light my-auto text-end links">
+                    {% if active|stringformat:'s' == 'en' %}
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="../media/en.png" alt="english flag" />
+                            </div>
+                            <div id="language" class="language-menu">
+                                {% for language in languages %}
+                                    <div class="text-center">
+                                        <a href="{% url 'change_language' %}?language={{ language }}" class="h6 text-light p-2 language-links">{{ language }}</a>
+                                    </div>
+                                {% endfor %}   
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="dropdown">
+                            <div class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img src="../media//fr.png" alt="french flag" />
+                            </div>
+                            <div id="language" class="language-menu">
+                                {% for language in languages %}
+                                    <div class="text-center">
+                                        <a href="{% url 'change_language' %}?language={{ language }}" class="h6 text-light p-2 language-links">{{ language }}</a>
+                                    </div>
+                                {% endfor %}   
+                            </div>
+                        </div>
+                    {% endif %}
+                    <a class="text-light menu my-auto text-end p-1" data-bs-toggle="offcanvas" href="#offcanvasExample" href="{% url 'home' %}">Menu</a>
+                </div>
             {% else %}
-                <a href="#" class="col-3 p-2 text-end my-auto text-light login"><i class="fas fa-user"></i></a>
+                <div class="col-4 col-md-3 text-light my-auto text-end">zahur
+                    <a href="#" class="p-2 text-end my-auto text-light login"><i class="fas fa-user"></i></a>
+                </div>
             {% endif %}                                 
         </nav>            
         <!-- Message template -->  
