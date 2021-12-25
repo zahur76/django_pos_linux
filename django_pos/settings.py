@@ -79,7 +79,6 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 # Required when using MEDIA_URL in template
                 "django.template.context_processors.media",
-                'translate.contexts.active_language',
             ],
         },
     },

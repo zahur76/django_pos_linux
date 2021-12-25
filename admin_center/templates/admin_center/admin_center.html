@@ -11,7 +11,7 @@
     <div class="row m-0 text-center">
         <a href="{% url 'products' %}" class="col-6 col-md-4 col-lg-3 p-2">
             <div class="admin-box p-2">
-                {% if active|stringformat:'s' == 'en' %}
+                {% if request.session.my_language.language == 'en' %}
                     <div class="col-12">PRODUCT</div>
                 {% else %}
                     <div class="col-12">PRODUIT</div>
@@ -22,7 +22,7 @@
         </a>
         <a href="{% url 'category' %}"class="col-6 col-md-4 col-lg-3 p-2">
             <div class="admin-box p-2">
-                {% if active|stringformat:'s' == 'en' %}
+                {% if request.session.my_language.language == 'en' %}
                     <div class="col-12">CATEGORY</div>
                 {% else %}
                     <div class="col-12">CATEGORIE</div>
@@ -33,7 +33,7 @@
         </a>
         <a href="{% url 'subcategory' %}"class="col-6 col-md-4 col-lg-3 p-2">
             <div class="admin-box p-2">
-                {% if active|stringformat:'s' == 'en' %}
+                {% if request.session.my_language.language == 'en' %}
                     <div class="col-12">SUBCATEGORY</div>
                 {% else %}
                     <div class="col-12">SOUS-CATEGORIE</div>
@@ -44,7 +44,7 @@
         </a>
         <a href="{% url 'translate' %}"class="col-6 col-md-4 col-lg-3 p-2">
             <div class="admin-box p-2">
-                {% if active|stringformat:'s' == 'en' %}
+                {% if request.session.my_language.language == 'en' %}
                     <div class="col-12">LANGUAGE</div>
                 {% else %}
                     <div class="col-12">LANGUE</div>

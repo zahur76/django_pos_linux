@@ -1,11 +1,11 @@
 from django import forms
 
-from .models import activeLanguage
+from .models import Language
 
 
-class add_activeLanguageForm(forms.ModelForm):
+class LanguageForm(forms.ModelForm):
     class Meta:
-        model = activeLanguage
+        model = Language
         fields = "__all__"
 
     def __init__(self, *args, **kwargs):

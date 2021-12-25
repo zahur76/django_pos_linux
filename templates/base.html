@@ -21,7 +21,7 @@
         <nav class="row m-0 bg-dark">
             <div class="d-none d-md-block col-md-3"></div>                    
             <div class="col-8 col-md-6 h1 text-center">
-                {% if active|stringformat:'s' == 'en' %}
+                {% if request.session.my_language.my_language == 'en' %}
                     <a class="text-light logo" href="{% url 'home' %}">POINT OF SALES</a>
                 {% else %}
                     <a class="text-light logo" href="{% url 'home' %}">POINTE DE VENTE</a>
@@ -37,7 +37,7 @@
                             <div id="language" class="language-menu">
                                 {% for language in languages %}
                                     <div class="text-center">
-                                        <a href="{% url 'change_language' %}?language={{ language }}" class="h6 text-light p-2 language-links">{{ language }}</a>
+                                        <a href="#" class="h6 text-light p-2 language-links">{{ language }}</a>
                                     </div>
                                 {% endfor %}   
                             </div>
@@ -50,7 +50,7 @@
                             <div id="language" class="language-menu">
                                 {% for language in languages %}
                                     <div class="text-center">
-                                        <a href="{% url 'change_language' %}?language={{ language }}" class="h6 text-light p-2 language-links">{{ language }}</a>
+                                        <a href="#" class="h6 text-light p-2 language-links">{{ language }}</a>
                                     </div>
                                 {% endfor %}   
                             </div>
