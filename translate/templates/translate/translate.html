@@ -9,7 +9,8 @@
 {% block content %}
     <a href="{% url 'admin_center' %}"class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a> 
     <h1 class="text-center">Language</h1>
-    <div class="w-50 mx-auto">
+    <div class="h4 text-center">Current Language: {{ request.session.my_language.language }}</div>
+    <div class="language-form mx-auto">
         <form id="change-language" class="mx-auto mt-3" action="{% url 'translate' %}" method="POST">
             {% csrf_token %}
             {% crispy form %}

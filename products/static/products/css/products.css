@@ -1,5 +1,5 @@
 .content {
-    background: rgb(255, 255, 255);
+    background-image: linear-gradient(to bottom, rgb(120, 253, 160) , rgb(187, 183, 250));
 }
 
 .add-category-form-input {
@@ -40,10 +40,6 @@ a {
     background:rgb(240, 239, 239);
 }
 
-.bg-category {
-    background: rgb(108, 108, 245); 
-}
-
 .form-control {
     height: 34px;
 }
@@ -62,7 +58,7 @@ a {
 }
 
 .bg-product-form {
-    background: rgb(228, 224, 248);
+    border: 1px solid white !important;
 }
 
 @media screen and (min-width: 992px){

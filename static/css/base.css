@@ -100,7 +100,7 @@ img {
 .language-menu {
     position: absolute;
     top: 30px;
-    right: 15px;
+    right: 10px;
     background: rgba(0, 0, 0, 0.753);
     visibility: hidden;
     justify-content: center;
