@@ -13,7 +13,7 @@ a {
 
 .product-description {
     position: relative;
-    bottom: 27px;
+    bottom: 24px;
     margin-bottom: -10px;
 }
 
@@ -34,10 +34,34 @@ a {
 }
 
 .bg-custom-dropdown {
-    background: rgba(0, 0, 0, 0.89);
+    background: rgba(111, 101, 252, 0.918);
 }
 
 .product-icon:hover {
     opacity: 0.7;
+}
+
+.product-add-modal {
+    top: 30%;
+    left: 25%;
+    height: auto;
+    width: 50%;
+    background: rgba(128, 167, 250, 0.849);
+}
+
+.modal-dialog {
+    pointer-events: all;
+}
+
+@media screen and (max-width: 768px){
+    .product-add-modal {
+        width: 60%;
+        left: 20%;
+}
+
+@media screen and (max-width: 576px){
+    .product-add-modal {
+        width: 90%;
+        left: 5%;
 }
 

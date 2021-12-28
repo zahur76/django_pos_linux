@@ -15,6 +15,10 @@ def index(request):
     all_products = Product.objects.all()
     all_categories = Category.objects.all()
 
+    for product in all_products:
+        if product.colour_available != None:
+            print(product.colour_available.split(","))
+
     if request.POST:
         query = request.POST["q"]
         if not query:

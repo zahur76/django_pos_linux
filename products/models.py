@@ -45,8 +45,8 @@ class Product(models.Model):
     price = models.IntegerField()
     sku = models.CharField(max_length=254, null=True, blank=True)
     stock_available = models.IntegerField()
-    has_sizes = models.BooleanField(default=False, null=False, blank=False)
-    has_colour = models.BooleanField(default=False, null=False, blank=False)
+    sizes_available = models.CharField(max_length=254, null=True, blank=True, default="s,m,lg")
+    colour_available = models.CharField(max_length=254, null=True, blank=True, default="white,black")
     has_vat = models.BooleanField(default=False, null=False, blank=False)
     image = models.ImageField(null=False, blank=False)
 

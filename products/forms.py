@@ -69,6 +69,8 @@ class add_productForm(forms.ModelForm):
         placeholders = {
             "name": "Name",
             "has_sizes": "Size Present",
+            "sizes_available": "Enter Sizes",
+            "colour_available": "Enter Colours",
             "has_colour": "Colour Present",
             "has_vat": "Vat Article",
             "stock_available": "Stock",
@@ -83,6 +85,6 @@ class add_productForm(forms.ModelForm):
             self.fields[field].widget.attrs[
                 "class"
             ] = "border-dark rounded-0 add-product-form-input m-1"
-            if field not in ['has_sizes', 'has_vat', 'has_colour']:
+            if field not in ['has_sizes', 'has_vat', 'has_colour', 'sizes_available', 'colour_available']:
                 self.fields[field].label = False
             

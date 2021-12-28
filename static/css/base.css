@@ -37,6 +37,7 @@ nav a {
 }
 
 /* login modal*/
+
 .login-modal {
     width: 40%;
     left: 30%;
@@ -89,7 +90,7 @@ nav a {
     color:rgb(255, 255, 255);
 }
 
-img {
+.dropdown img {
     width: 20px;
     padding-bottom: 3px;
 }

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_tags %}
 
 {% block extra_css %}  
     <link rel="stylesheet" href="{% static 'home/css/home.css' %}">          
@@ -35,13 +36,13 @@
             <div class="row m-0">
                 {% for category in categories %}
                     <div class="dropdown col-6 col-sm-4 col-md-3 mt-1">                        
-                        <button class="btn btn-secondary dropdown-toggle w-100 p-2 bg-success" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-secondary dropdown-toggle w-100 p-2 bg-success" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
                         {{ category.name|capfirst }}
                         </button>
                         <div class="dropdown-menu bg-custom-dropdown" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item text-light fw-bold" href="{% url 'home' %}?query={{category}}">All</a>
+                            <a class="dropdown-item text-dark fw-bold" href="{% url 'home' %}?query={{category}}">All</a>
                             {% for subcategory in category.cat.all %}
-                                <a class="dropdown-item text-light fw-bold" href="{% url 'home' %}?query={{category}}&query={{subcategory}}">{{ subcategory }}</a>
+                                <a class="dropdown-item text-dark fw-bold" href="{% url 'home' %}?query={{category}}&query={{subcategory}}">{{ subcategory }}</a>
                             {% endfor %}
                         </div>
                     </div>
@@ -49,16 +50,59 @@
             </div>           
             <div class="row m-0 mt-2">
                 {% for product in products %}
-                    <a href="#" class="col-6 col-sm-4 col-md-3 col-lg-2 product-icon">                        
-                        <img src="{{ product.image.url }}" alt="{{ product.name }}"/>                        
-                        <div class="product-description" >
-                            <div class="col-12 bg-custom-price text-light">${{product.price}}</div>
-                        </div>
-                    </a>                           
+                    {% if product.sizes_available or product.colour_available %}
+                        <a href="#" class="col-6 col-sm-4 col-md-3 col-lg-2 product-icon" data-bs-toggle="modal" data-bs-target="#productAddModal{{ product.id }}">                     
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}"/>                        
+                            <div class="product-description" >
+                                <div class="col-12 bg-custom-price text-light">${{product.price}}</div>
+                            </div>
+                        </a>
+                    {% else %}
+                        <a href="#" class="col-6 col-sm-4 col-md-3 col-lg-2 product-icon">                        
+                            <img src="{{ product.image.url }}" alt="{{ product.name }}"/>                        
+                            <div class="product-description" >
+                                <div class="col-12 bg-custom-price text-light">${{product.price}}</div>
+                            </div>
+                        </a>
+                    {% endif %}
                 {% endfor %}
             </div> 
         </div>
     </div>
+    <!-- Add Product Modal -->
+    {% for product in products %}
+        <div class="modal fade product-add-modal" id="productAddModal{{ product.id }}" data-bs-backdrop="static">
+            <div class="modal-dialog">
+            <div class="add-product-modal">
+                <div class="modal-header p-1">
+                <h5 class="modal-title text-dark" id="exampleModalLabel">{{ product.name }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        {% if product.colour_available %}                            
+                            <select class="form-select m-2" name="colour" id="colour" required>                     
+                                <option value="" selected>Select Colour</option>
+                                {% for colour in product.colour_available|make_list %}
+                                    <option value="{{ forloop.counter }}">{{ colour }}</option>
+                                {% endfor %}
+                            </select>
+                        {% endif %}
+                        {% if product.sizes_available %}
+                            <select class="form-select m-2" name="size" id="size" required>
+                                <option value="" selected>Select Size</option>
+                                {% for size in product.sizes_available|make_list %}
+                                    <option value="{{ forloop.counter }}">{{ size }}</option>
+                                {% endfor %}
+                            </select>
+                        {% endif %}
+                        <button type="submit" class="p-1 m-2 btn-success w-100 border-0 rounded-0">Submit</button>
+                    </form>                
+                </div>                
+            </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}
 
 {% block extra_js %}              
