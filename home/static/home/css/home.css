@@ -1,0 +1,43 @@
+a {
+    text-decoration: none;
+}
+.till-screen {
+    background: white;
+    min-height: 80vh;
+}
+
+.product-screen {
+    background: rgb(206, 206, 206);
+    min-height: 80vh;
+}
+
+.product-description {
+    position: relative;
+    bottom: 27px;
+    margin-bottom: -10px;
+}
+
+.product-icon img {
+    width: 100%;
+}
+
+.search.form-control {
+    height: 34px;
+}
+
+.bg-custom {
+    background: rgba(111, 101, 252, 0.774);
+}
+
+.bg-custom-price {
+    background: rgba(0, 0, 0, 0.521);
+}
+
+.bg-custom-dropdown {
+    background: rgba(0, 0, 0, 0.89);
+}
+
+.product-icon:hover {
+    opacity: 0.7;
+}
+

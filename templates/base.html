@@ -84,16 +84,16 @@
                     <div class="offcanvas-header">
                         <h5 class="offcanvas-title text-light text-center" id="offcanvasExampleLabel">Menu</h5>
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">                       
+                    </div>
+                    <div class="offcanvas-body">                       
                         {% if request.get_full_path == "/admin_center/" %}
-                            <a href="{% url 'home' %}"class="p-2 text-light"><i class="fas fa-home"></i>&nbsp;Home</a></br>
+                            <a href="{% url 'home' %}" class="p-2 text-light"><i class="fas fa-home"></i>&nbsp;Home</a></br>
                         {% endif %}
                         {% if request.get_full_path != "/admin_center/" %} 
                             <a href="{% url 'admin_center' %}" class="p-2 text-center my-auto text-light"><i class="fas fa-user"></i>&nbsp;&nbsp;Admin</a></br>
                         {% endif %}
                         <a href="{% url 'logout' %}" class="p-2 text-center my-auto text-light"><i class="fas fa-sign-out-alt"></i>&nbsp;Logout</a>
-                        </div>
+                    </div>
                 </div>
             {% endif %}
             {% block content %}                
@@ -106,7 +106,7 @@
         
          <!-- login Modal -->    
          <div id="loginModal" class="modal login-modal">
-            <div class="modal-content mt-0 border-0">                                     
+            <div class="modal-content mt-0 border-0">                                    
                 <div class="choose mb-2">
                     <h5 class="text-center text-light modal-title">Enter username and password</h5> 
                     <h6 class="error-message text-danger text-center"></h6>                             

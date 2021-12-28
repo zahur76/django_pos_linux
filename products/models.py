@@ -42,6 +42,7 @@ class Product(models.Model):
         "subCategory", null=True, blank=True, on_delete=models.SET_NULL
     )
     name = models.CharField(max_length=254)
+    price = models.IntegerField()
     sku = models.CharField(max_length=254, null=True, blank=True)
     stock_available = models.IntegerField()
     has_sizes = models.BooleanField(default=False, null=False, blank=False)

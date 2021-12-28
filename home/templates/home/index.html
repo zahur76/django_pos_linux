@@ -7,6 +7,58 @@
 
 
 {% block content %}
+    <div class="row m-4 text-center mt-5">
+        <div class="col-12 col-md-4 order-md-1 order-2 till-screen">
+            till product-screen
+        </div>
+        <div class="col-12 col-md-8 order-1 product-screen bg-custom">
+            <div class="col-10 mt-3 mx-auto">
+                <form action="#" method="POST">
+                    {% csrf_token %}
+                    <div class="input-group mb-3 search-bar">
+                        <input type="text" class="search form-control" name="q" placeholder="Search product" />
+                        <div class="input-group-append">
+                          <button class="input-group-text p-1 btn-success border-light rounded-0">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <a href="{% url 'home' %}?All=all" class="col-10 btn btn-success p-2 mb-2 fw-bold">Reset</a>
+            <div class="text-start ps-3 fw-bold text-dark">
+            {% for q in query %}                
+                {{ q|capfirst  }}
+                {% if forloop.counter == 1 and query|length == 2 %}
+                    / 
+                {% endif %}                    
+            {% endfor %}
+            </div>      
+            <div class="row m-0">
+                {% for category in categories %}
+                    <div class="dropdown col-6 col-sm-4 col-md-3 mt-1">                        
+                        <button class="btn btn-secondary dropdown-toggle w-100 p-2 bg-success" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ category.name|capfirst }}
+                        </button>
+                        <div class="dropdown-menu bg-custom-dropdown" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item text-light fw-bold" href="{% url 'home' %}?query={{category}}">All</a>
+                            {% for subcategory in category.cat.all %}
+                                <a class="dropdown-item text-light fw-bold" href="{% url 'home' %}?query={{category}}&query={{subcategory}}">{{ subcategory }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>           
+            <div class="row m-0 mt-2">
+                {% for product in products %}
+                    <a href="#" class="col-6 col-sm-4 col-md-3 col-lg-2 product-icon">                        
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}"/>                        
+                        <div class="product-description" >
+                            <div class="col-12 bg-custom-price text-light">${{product.price}}</div>
+                        </div>
+                    </a>                           
+                {% endfor %}
+            </div> 
+        </div>
+    </div>
 {% endblock %}
 
 {% block extra_js %}              

@@ -73,6 +73,7 @@ class add_productForm(forms.ModelForm):
             "has_vat": "Vat Article",
             "stock_available": "Stock",
             "image": "Image",
+            "price": "Price",
         }
 
         self.fields["subcategory"].widget.attrs["autofocus"] = True
@@ -82,7 +83,6 @@ class add_productForm(forms.ModelForm):
             self.fields[field].widget.attrs[
                 "class"
             ] = "border-dark rounded-0 add-product-form-input m-1"
-        self.fields["subcategory"].label = False
-        self.fields["name"].label = False
-        self.fields["stock_available"].label = False
-        self.fields["image"].label = False
+            if field not in ['has_sizes', 'has_vat', 'has_colour']:
+                self.fields[field].label = False
+            

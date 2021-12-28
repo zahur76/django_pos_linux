@@ -25,25 +25,25 @@
     <div class="row m-0 text-center">
         {% for product in products %}          
             <div class="col-12 p-1 text-start h3"><a href="{% url 'delete_product' product_id=product.id %}"><i class="h4 text-danger fas fa-trash-alt p-1"></i></a><a href="{% url 'update_product' product_id=product.id %}"><i class="text-info fas fa-edit p-1"></i></a> {{ product.name }}</div>
-            <div class="col-6 col-md-3 h6 text-end">Category</div><div class="h6 col-6 col-md-9 text-start">{{ product.category}}</div>
-            <div class="col-6 col-md-3 h6 text-end">Subcategory</div><div class="h6 col-6 col-md-9 text-start">{{ product.subcategory }}</div>
-            <div class="col-6 col-md-3 h6 text-end">SKU</div><div class="h6 col-6 col-md-9 text-start">{{ product.sku }}</div>
+            <div class="col-6 col-md-3 h6 text-end fw-bold">Category</div><div class="h6 col-6 col-md-3 text-start">{{ product.category}}</div>
+            <div class="col-6 col-md-3 h6 text-end fw-bold">Subcategory</div><div class="h6 col-6 col-md-3 text-start">{{ product.subcategory }}</div>
+            <div class="col-6 col-md-3 h6 text-end fw-bold">SKU</div><div class="h6 col-6 col-md-3 text-start">{{ product.sku }}</div>
             {% if product.has_size %}
-                <div class="col-6 col-md-3 h6 text-end">Has Size</div><div class="h6 col-6 col-md-9 text-start">True</div>
+                <div class="col-6 col-md-3 h6 text-end fw-bold">Has Size</div><div class="h6 col-3 col-md-3 text-start">True</div>
             {% else %}
-                <div class="col-6 col-md-3 h6 text-end">Has Size</div><div class="h6 col-6 col-md-9 text-start">False</div>
+                <div class="col-6 col-md-3 h6 text-end fw-bold">Has Size</div><div class="h6 col-3 col-md-3 text-start">False</div>
             {% endif %}
             {% if product.has_vat %}
-                <div class="col-6 col-md-3 h6 text-end">Has Vat</div><div class="h6 col-6 col-md-9 text-start">True</div>
+                <div class="col-6 col-md-3 h6 text-end fw-bold">Has Vat</div><div class="h6 col-6 col-md-3 text-start">True</div>
             {% else %}
-                <div class="col-6 col-md-3 h6 text-end">Has Vat</div><div class="h6 col-6 col-md-9 text-start">False</div>
+                <div class="col-6 col-md-3 h6 text-end fw-bold">Has Vat</div><div class="h6 col-6 col-md-3 text-start">False</div>
             {% endif %}
             {% if product.has_colour %}
-                <div class="col-6 col-md-3 h6 text-end">Has Colour</div><div class="h6 col-6 col-md-9 text-start">True</div>
+                <div class="col-6 col-md-3 h6 text-end fw-bold">Has Colour</div><div class="h6 col-3 col-md-3 text-start">True</div>
             {% else %}
-                <div class="col-6 col-md-3 h6 text-end">Has Colour</div><div class="h6 col-6 col-md-9 text-start">False</div>
+                <div class="col-6 col-md-3 h6 text-end fw-bold">Has Colour</div><div class="h6 col-3 col-md-3 text-start">False</div>
             {% endif %}
-                <div class="col-6 col-md-3 mb-2 h6 text-end">Stock</div><div class="h6 col-6 col-md-9 text-start mb-2">{{ product.stock_available }}</div>
+                <div class="col-6 col-md-3 mb-2 h6 text-end fw-bold">Stock</div><div class="h6 col-3 col-md-3 text-start mb-2">{{ product.stock_available }}</div>
         {% endfor %}
     </div>         
 {% endblock %}
