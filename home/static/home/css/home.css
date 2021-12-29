@@ -53,6 +53,10 @@ a {
     pointer-events: all;
 }
 
+.till-text {
+    font-size: 14px;
+}
+
 @media screen and (max-width: 768px){
     .product-add-modal {
         width: 60%;

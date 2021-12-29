@@ -15,10 +15,6 @@ def index(request):
     all_products = Product.objects.all()
     all_categories = Category.objects.all()
 
-    for product in all_products:
-        if product.colour_available != None:
-            print(product.colour_available.split(","))
-
     if request.POST:
         query = request.POST["q"]
         if not query:
@@ -64,7 +60,7 @@ def index(request):
         }
 
         return render(request, "home/index.html", context)
-
+    
     context = {
         'products': all_products,
         'categories': all_categories,

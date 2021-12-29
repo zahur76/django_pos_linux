@@ -9,8 +9,29 @@
 
 {% block content %}
     <div class="row m-4 text-center mt-5">
-        <div class="col-12 col-md-4 order-md-1 order-2 till-screen">
-            till product-screen
+        <div class="col-12 col-md-4 order-md-1 order-2 till-screen p-0">
+            {% for product in bag_content %}
+                <div class="row m-0 till-text">
+                    <div class="col-12 text-start border-bottom fw-bold bg-custom">{{ forloop.counter}}.{{ product.product.name }}</div>
+                    <div class="col-12 text-start">sku: {{ product.product.sku }}</div>
+                    {% if product.colour %}
+                        <div class="col-6 text-start">Colour: {{ product.colour }}</div>
+                    {% else %}
+                    {% endif %}
+                    {% if product.size %}
+                        <div class="col-6 text-start">Size: {{ product.size }}</div>
+                    {% else %}
+                    {% endif %}
+                    <div class="col-12 text-start">Qty: {{ product.quantity }}</div>                    
+                    <div class="col-8 text-start">Price ( {{product.quantity}} X ${{product.product.price}} )</div><div class="col-4 text-end">${{ product.sub_total }}</div>
+                </div>
+            {% endfor %}
+            <div class="row m-0 till-text">
+                <div class="col-12 border-bottom border-dark"></div>
+                <div class="col-8 text-end">Total(ex Vat)</div><div class="col-4 text-end">${{ net_total }}</div>
+                <div class="col-8 text-end">Vat</div><div class="col-4 text-end">${{ vat }}</div>
+                <div class="col-8 text-end fw-bold">Grand Total</div><div class="col-4 text-end fw-bold">${{ grand_total }}</div>
+            </div>
         </div>
         <div class="col-12 col-md-8 order-1 product-screen bg-custom">
             <div class="col-10 mt-3 mx-auto">
@@ -58,7 +79,7 @@
                             </div>
                         </a>
                     {% else %}
-                        <a href="#" class="col-6 col-sm-4 col-md-3 col-lg-2 product-icon">                        
+                        <a href="{% url 'add_to_bag' product_id=product.id %}?product_id={{ product.id }}" class="col-6 col-sm-4 col-md-3 col-lg-2 product-icon">                        
                             <img src="{{ product.image.url }}" alt="{{ product.name }}"/>                        
                             <div class="product-description" >
                                 <div class="col-12 bg-custom-price text-light">${{product.price}}</div>
@@ -79,12 +100,13 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="{% url 'add_to_bag' product_id=product.id %}" method="POST">
+                        {% csrf_token %}
                         {% if product.colour_available %}                            
                             <select class="form-select m-2" name="colour" id="colour" required>                     
                                 <option value="" selected>Select Colour</option>
                                 {% for colour in product.colour_available|make_list %}
-                                    <option value="{{ forloop.counter }}">{{ colour }}</option>
+                                    <option value="{{ colour }}">{{ colour }}</option>
                                 {% endfor %}
                             </select>
                         {% endif %}
@@ -92,7 +114,7 @@
                             <select class="form-select m-2" name="size" id="size" required>
                                 <option value="" selected>Select Size</option>
                                 {% for size in product.sizes_available|make_list %}
-                                    <option value="{{ forloop.counter }}">{{ size }}</option>
+                                    <option value="{{ size }}">{{ size }}</option>
                                 {% endfor %}
                             </select>
                         {% endif %}
