@@ -57,6 +57,18 @@ a {
     font-size: 14px;
 }
 
+.btn-custom-2 {
+    background: rgba(0, 193, 151, 0.815);
+}
+
+.btn-custom-2:hover {
+    background: rgba(0, 193, 151, 0.651);
+}
+
+.bg-custom-3 {
+    background: rgb(240, 195, 38)
+}
+
 @media screen and (max-width: 768px){
     .product-add-modal {
         width: 60%;

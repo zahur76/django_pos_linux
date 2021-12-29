@@ -116,6 +116,10 @@ nav a {
     color:rgb(117, 117, 117) !important;
 }
 
+.bg-custom-4 {
+    background: rgb(0, 193, 152);
+}
+
 /* Media screen */
 @media screen and (max-width: 992px){
     .login-modal { 

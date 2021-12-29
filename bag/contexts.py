@@ -20,6 +20,8 @@ def bag_contents(request):
             vat_total += item['quantity'] * product.price
 
         vat = vat_total * 0.15
+    
+    print(bag_items)
 
     context = {
         'bag_content': bag_items,

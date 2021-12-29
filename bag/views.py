@@ -86,3 +86,16 @@ def add_to_bag(request, product_id):
         request.session['bag'] = bag
         return redirect(reverse("home"))
 
+# Create your views here
+def delete_from_bag(request, product_id):
+    """A view to delete products from bag"""    
+
+    bag = request.session.get('bag', [])
+
+
+    index = bag.pop(product_id-1)
+           
+    request.session['bag'] = bag
+
+    return redirect(reverse("home"))
+

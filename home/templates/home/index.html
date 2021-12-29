@@ -12,7 +12,8 @@
         <div class="col-12 col-md-4 order-md-1 order-2 till-screen p-0">
             {% for product in bag_content %}
                 <div class="row m-0 till-text">
-                    <div class="col-12 text-start border-bottom fw-bold bg-custom">{{ forloop.counter}}.{{ product.product.name }}</div>
+                    <div class="col-12 text-start border-bottom fw-bold bg-custom-3">{{ forloop.counter}}.{{ product.product.name }}</div>
+                    <div class="col-12 text-start"><a href="{% url 'delete_from_bag' product_id=forloop.counter %}" class="text-danger p-0 till-text"><i class="fas fa-trash-alt"></i></a></div>
                     <div class="col-12 text-start">sku: {{ product.product.sku }}</div>
                     {% if product.colour %}
                         <div class="col-6 text-start">Colour: {{ product.colour }}</div>
@@ -34,6 +35,7 @@
             </div>
         </div>
         <div class="col-12 col-md-8 order-1 product-screen bg-custom">
+            <div class="col-12 text-center h2 fw-bold">${{ grand_total }}</div>
             <div class="col-10 mt-3 mx-auto">
                 <form action="#" method="POST">
                     {% csrf_token %}
@@ -45,7 +47,7 @@
                     </div>
                 </form>
             </div>
-            <a href="{% url 'home' %}?All=all" class="col-10 btn btn-success p-2 mb-2 fw-bold">Reset</a>
+            <a href="{% url 'home' %}?All=all" class="col-10 btn btn-custom-2 p-2 mb-2 fw-bold">Reset</a>
             <div class="text-start ps-3 fw-bold text-dark">
             {% for q in query %}                
                 {{ q|capfirst  }}
@@ -57,8 +59,8 @@
             <div class="row m-0">
                 {% for category in categories %}
                     <div class="dropdown col-6 col-sm-4 col-md-3 mt-1">                        
-                        <button class="btn btn-secondary dropdown-toggle w-100 p-2 bg-success" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                        {{ category.name|capfirst }}
+                        <button class="btn btn-custom-2 dropdown-toggle w-100 p-2 fw-bold" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
+                            {{ category.name|capfirst }}
                         </button>
                         <div class="dropdown-menu bg-custom-dropdown" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item text-dark fw-bold" href="{% url 'home' %}?query={{category}}">All</a>
