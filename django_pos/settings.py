@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "translate",
     "admin_center",
     "bag",
+    "checkout",
 ]
 
 MIDDLEWARE = [
