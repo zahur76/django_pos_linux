@@ -33,14 +33,24 @@
                 <div class="col-8 text-end">Vat</div><div class="col-4 text-end">${{ vat }}</div>
                 <div class="col-8 text-end fw-bold">Grand Total</div><div class="col-4 text-end fw-bold">${{ grand_total }}</div>
             </div>
+            <form id="pay-form" action="{% url 'admin_center' %}" method="POST">
+                {% csrf_token %}
+                <div class="input-group mb-3 p-3 pb-0">
+                    <span class="input-group-text">$</span>
+                    <input type="text" class="form-control pay-input" id="amount" name="amount" aria-label="Amount (to the nearest dollar)">
+                    <span class="input-group-text">.00</span>
+                </div>
+                <button type="submit" class="pay-button col-10 btn btn-custom-2 p-2 mt-2 mb-2 fw-bold">Confirm Payment</button>
+            </form>
         </div>
+        <!-- product screen -->
         <div class="col-12 col-md-8 order-1 product-screen bg-custom">
-            <div class="col-12 text-center h2 fw-bold">${{ grand_total }}</div>
+            <div class="col-12 text-center h2 fw-bold total">${{ grand_total }}</div>
             <div class="col-10 mt-3 mx-auto">
                 <form action="#" method="POST">
                     {% csrf_token %}
                     <div class="input-group mb-3 search-bar">
-                        <input type="text" class="search form-control" name="q" placeholder="Search product" />
+                        <input type="text" class="search form-control pay-form" name="q" placeholder="Search product" />
                         <div class="input-group-append">
                           <button class="input-group-text p-1 btn-success border-light rounded-0">Submit</button>
                         </div>

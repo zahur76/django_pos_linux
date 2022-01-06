@@ -69,6 +69,10 @@ a {
     background: rgb(240, 195, 38)
 }
 
+.pay-input {
+    height: 38px;
+}
+
 @media screen and (max-width: 768px){
     .product-add-modal {
         width: 60%;
