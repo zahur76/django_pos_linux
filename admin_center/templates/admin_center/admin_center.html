@@ -53,6 +53,17 @@
                 <div class="col-12 h6 text-start pt-2 admin-footer">Language</br>Management</div>
             </div>
         </a>
+        <a href="#"class="col-6 col-md-4 col-lg-3 p-2">
+            <div class="admin-box p-2">
+                {% if request.session.my_language.language == 'en' %}
+                    <div class="col-12">ORDERS</div>
+                {% else %}
+                    <div class="col-12">COMMANDE</div>
+                {% endif %}
+                <div class="col-12 border-bottom border-secondary"><i class="fas fa-file-invoice"></i></div>
+                <div class="col-12 h6 text-start pt-2 admin-footer">Checkout</br>Management</div>
+            </div>
+        </a>
     </div>        
 {% endblock %}
 

@@ -40,7 +40,10 @@
                     <input type="text" class="form-control pay-input" id="amount" name="amount" aria-label="Amount (to the nearest dollar)">
                     <span class="input-group-text">.00</span>
                 </div>
-                <button type="submit" class="pay-button col-10 btn btn-custom-2 p-2 mt-2 mb-2 fw-bold">Confirm Payment</button>
+                {% if bag_content %}
+                    <button type="submit" class="pay-button col-10 btn btn-custom-2 p-2 mt-2 mb-2 fw-bold">Confirm Payment</button>
+                {% else %}                    
+                {% endif %}
             </form>
         </div>
         <!-- product screen -->
