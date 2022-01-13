@@ -6,13 +6,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('translate', '0002_delete_activelanguage'),
+        ("translate", "0002_delete_activelanguage"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='language',
-            name='name',
-            field=models.CharField(choices=[('en', 'en'), ('fr', 'fr')], max_length=254),
+            model_name="language",
+            name="name",
+            field=models.CharField(
+                choices=[("en", "en"), ("fr", "fr")], max_length=254
+            ),
         ),
     ]

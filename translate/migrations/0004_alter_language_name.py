@@ -6,13 +6,16 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('translate', '0003_alter_language_name'),
+        ("translate", "0003_alter_language_name"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='language',
-            name='name',
-            field=models.CharField(choices=[(None, 'Choose Language'), ('en', 'en'), ('fr', 'fr')], max_length=254),
+            model_name="language",
+            name="name",
+            field=models.CharField(
+                choices=[(None, "Choose Language"), ("en", "en"), ("fr", "fr")],
+                max_length=254,
+            ),
         ),
     ]

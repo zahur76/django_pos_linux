@@ -85,6 +85,11 @@ class add_productForm(forms.ModelForm):
             self.fields[field].widget.attrs[
                 "class"
             ] = "border-dark rounded-0 add-product-form-input m-1"
-            if field not in ['has_sizes', 'has_vat', 'has_colour', 'sizes_available', 'colour_available']:
+            if field not in [
+                "has_sizes",
+                "has_vat",
+                "has_colour",
+                "sizes_available",
+                "colour_available",
+            ]:
                 self.fields[field].label = False
-            

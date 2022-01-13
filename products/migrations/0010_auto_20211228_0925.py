@@ -6,18 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('products', '0009_alter_product_price'),
+        ("products", "0009_alter_product_price"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='product',
-            name='colour_available',
-            field=models.CharField(blank=True, default='white,black', max_length=254, null=True),
+            model_name="product",
+            name="colour_available",
+            field=models.CharField(
+                blank=True, default="white,black", max_length=254, null=True
+            ),
         ),
         migrations.AddField(
-            model_name='product',
-            name='sizes_available',
-            field=models.CharField(blank=True, default='s,m,lg', max_length=254, null=True),
+            model_name="product",
+            name="sizes_available",
+            field=models.CharField(
+                blank=True, default="s,m,lg", max_length=254, null=True
+            ),
         ),
     ]

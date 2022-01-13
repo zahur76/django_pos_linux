@@ -19,4 +19,4 @@ class LanguageForm(forms.ModelForm):
             self.fields[field].widget.attrs[
                 "class"
             ] = "border-dark rounded-0 mx-auto add-category-form-input m-1"
-            self.fields[field].label =  False  
+            self.fields[field].label = False

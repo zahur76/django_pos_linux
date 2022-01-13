@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('checkout', '0002_alter_orderlineitem_lineitem_vat'),
+        ("checkout", "0002_alter_orderlineitem_lineitem_vat"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='orderlineitem',
-            name='lineItem_vat',
+            model_name="orderlineitem",
+            name="lineItem_vat",
             field=models.DecimalField(decimal_places=2, max_digits=6),
         ),
         migrations.AlterField(
-            model_name='orderlineitem',
-            name='lineitem_total',
+            model_name="orderlineitem",
+            name="lineitem_total",
             field=models.DecimalField(decimal_places=2, max_digits=6),
         ),
     ]

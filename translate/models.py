@@ -1,9 +1,11 @@
 from django.db import models
 
 languages = (
-        (None, 'Choose Language'),
-        ('en', 'en'),
-        ('fr', 'fr'),)
+    (None, "Choose Language"),
+    ("en", "en"),
+    ("fr", "fr"),
+)
+
 
 class Language(models.Model):
     class Meta:
