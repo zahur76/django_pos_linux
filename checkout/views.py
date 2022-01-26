@@ -55,3 +55,12 @@ def checkout(request):
                 del request.session['bag']
 
         return render(request, "checkout/checkout.html")
+
+
+def order(request):
+
+    orders = Order.objects.all()
+
+    context = {'orders': orders}
+
+    return render(request, "checkout/order.html", context)

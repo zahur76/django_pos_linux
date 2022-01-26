@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block extra_css %}  
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">          
+{% endblock %}
+
+
+{% block content %}
+    <a href="{% url 'admin_center' %}"class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
+    <h1 class="col-12 border-bottom border-secondary mb-2 p-2">Orders</h1>
+    
+    {% for order in orders %}
+        <div class="col-12 p-2">{{forloop.counter}}.{{order}}</div>
+    {% endfor %}
+{% endblock %}
+
+{% block extra_js %}              
+    <script src="{% static 'checkout/js/checkout.js' %}" type="text/javascript"></script>
+{% endblock %}
