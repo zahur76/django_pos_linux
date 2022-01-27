@@ -53,8 +53,13 @@ def checkout(request):
 
             if 'bag' in request.session:
                 del request.session['bag']
+        
+        line_items = OrderLineItem.objects.filter(order=order.id)
+        context = {'order': order,
+                    'items': line_items,
+                }
 
-        return render(request, "checkout/checkout.html")
+        return render(request, "checkout/checkout.html", context)
 
 
 def order(request):
