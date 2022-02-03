@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect, reverse
 
 from bag.contexts import bag_contents
 from checkout.models import Order, OrderLineItem
@@ -8,7 +8,11 @@ from products.models import Product
 # Create your views here.
 def checkout(request):
     if request.POST:
+    
         basket = request.session.get("bag", {})
+
+        if basket == {}:
+            return redirect(reverse("home"))
 
         bag_items = []
 

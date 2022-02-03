@@ -10,12 +10,14 @@
 {% block content %}
     <a href="{% url 'admin_center' %}"class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
     <h1 class="col-12 border-bottom border-secondary mb-2 p-2">Checkout Summary</h1>
-    <div class="col-12">
-        {{order}}
-        {% for item in items %}
-            {{ item.product.name }}
+    <div class="row m-0 text-center">
+        <div class="col-1"></div><div class="col-3">Name</div><div class="col-2">Qty</div><div class="col-2">Size</div><div class="col-2">Colour</div><div class="col-2">Sub Total</div>
+    </div>          
+    <div class="row m-0 text-center">
+        {% for item in items %}                
+            <div class="col-1">{{ forloop.counter }}.</div><div class="col-3">{{ item.product.name }}</div><div class="col-2">{{ item.quantity }}</div><div class="col-2">{{ item.size }}</div><div class="col-2">{{ item.colour }}</div><div class="col-2">{{ item.lineitem_total }}</div>
         {% endfor %}
-    </div>      
+    </div>        
 {% endblock %}
 
 {% block extra_js %}              
