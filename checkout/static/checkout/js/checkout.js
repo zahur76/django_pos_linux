@@ -1,13 +1,13 @@
 $(document).ready(function(){
 
-    $(".order-modal").click(function(){
-        let modal = $(this).attr('value');
+    // $(".order-modal").click(function(){
+    //     let modal = $(this).attr('value');
 
-        let myModal = "#"+`${modal}`+ "-modal"
+    //     let myModal = "#"+`${modal}`+ "-modal"
 
-        console.log(myModal)
+    //     console.log(myModal)
 
-        $(myModal).show();
-    })
+    //     $(myModal).show();
+    // })
 
 });

@@ -12,13 +12,10 @@
     <h1 class="col-12 border-bottom border-secondary mb-2 p-2">Orders</h1>
     <div class="row m-0">
         {% for order in orders %}
-            <a href="#" class="col-12 p-2 order-modal" value="{{ forloop.counter }}" data-bs-toggle="modal" data-bs-target="#exampleModal">{{forloop.counter}}.{{order}}</a>
-        {% endfor %}
-    </div>
-
-    <!-- Modal -->
-    {% for order in orders %}
-        <div class="modal fade" id="{{ forloop.counter }}-modal">
+            <a href="#" class="col-12 p-2 order-modal" value="{{ forloop.counter }}" data-bs-toggle="modal" data-bs-target="#modal-{{forloop.counter}}">{{forloop.counter}}.{{order}}</a>
+        <!-- Modal -->
+      
+        <div class="modal fade" id="modal-{{ forloop.counter }}">
             <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -35,7 +32,11 @@
             </div>
             </div>
         </div>
-    {% endfor %}
+        
+        {% endfor %}
+    </div>
+
+    
 {% endblock %}
 
 {% block extra_js %}              
