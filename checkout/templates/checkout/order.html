@@ -8,11 +8,33 @@
 
 
 {% block content %}
-    <a href="{% url 'admin_center' %}"class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
+    <a href="{% url 'admin_center' %}" class="col-12 h4 p-3 m-0"><i class="text-dark fas fa-backward"></i></a>
     <h1 class="col-12 border-bottom border-secondary mb-2 p-2">Orders</h1>
-    
+    <div class="row m-0">
+        {% for order in orders %}
+            <a href="#" class="col-12 p-2 order-modal" value="{{ forloop.counter }}" data-bs-toggle="modal" data-bs-target="#exampleModal">{{forloop.counter}}.{{order}}</a>
+        {% endfor %}
+    </div>
+
+    <!-- Modal -->
     {% for order in orders %}
-        <div class="col-12 p-2">{{forloop.counter}}.{{order}}</div>
+        <div class="modal fade" id="{{ forloop.counter }}-modal">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title text-light" id="exampleModalLabel">{{ order }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+            </div>
+        </div>
     {% endfor %}
 {% endblock %}
 
