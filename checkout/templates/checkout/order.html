@@ -13,26 +13,36 @@
     <div class="row m-0">
         {% for order in orders %}
             <a href="#" class="col-12 p-2 order-modal" value="{{ forloop.counter }}" data-bs-toggle="modal" data-bs-target="#modal-{{forloop.counter}}">{{forloop.counter}}.{{order}}</a>
-        <!-- Modal -->
-      
+        <!-- Modal -->      
         <div class="modal fade" id="modal-{{ forloop.counter }}">
             <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title text-light" id="exampleModalLabel">{{ order }}</h5>
+                <div class="modal-header bg-info">
+                <h5 class="modal-title text-light h6" id="exampleModalLabel">Order No:{{ order }}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                ...
+                <div class="modal-body bg-danger">
+                    <div class="row m-0 text-center text-light">
+                        <div class="col-1"></div><div class="col-3">Name</div><div class="col-2">Qty</div><div class="col-2">Size</div><div class="col-2">Colour</div><div class="col-2">Sub Total</div>
+                    </div> 
+                    <div class="row m-0 text-ligh text-center">
+                    {% for item in  order.lineitems.all %}                        
+                        <div class="col-1">{{ forloop.counter }}.</div><div class="col-3">{{ item.product.name }}</div><div class="col-2">{{ item.quantity }}</div><div class="col-2">{{ item.size }}</div><div class="col-2">{{ item.colour }}</div><div class="col-2">{{ item.lineitem_total }}</div>
+                    {% endfor %}
+                    </div>
+                    <div class="col-12 border-bottom"></div>
+                    <div class="row m-0 text-light">
+                        <div class="col-10 text-end">Net Total</div><div class="col-2 text-center">{{ order.net_total|floatformat:2 }}</div>
+                        <div class="col-10 text-end">Vat</div><div class="col-2 text-center">{{ order.vat|floatformat:2 }}</div>
+                        <div class="col-10"></div><div class="col-2 border-bottom"></div>
+                        <div class="col-10 text-end fw-bold">Gross total</div><div class="col-2 text-center fw-bold">{{ order.gross_total|floatformat:2 }}</div>
+                    </div>  
                 </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <div class="modal-footer bg-info">
                 </div>
             </div>
             </div>
-        </div>
-        
+        </div>        
         {% endfor %}
     </div>
 
