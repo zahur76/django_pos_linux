@@ -139,7 +139,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 # For main static file not tied up to app and in base_dir/Required for base.css so django will look here too
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = 'static'
 
 # This will add the file to the media folder and not to another url
 MEDIA_URL = "/media/"
@@ -154,7 +154,7 @@ if "USE_AWS" in os.environ:
     }
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = "django-pos"
-    AWS_S3_REGION_NAME = "aus-west-2"
+    AWS_S3_REGION_NAME = "us-west-2"
     AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
     AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
     AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
