@@ -28,10 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = "DEVELOPMENT" in os.environ
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['django-pos-env.eba-aevscmhw.us-west-2.elasticbeanstalk.com']
 
 # Application definition
 
@@ -94,9 +93,9 @@ WSGI_APPLICATION = "django_pos.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
     }
 }
 
@@ -140,6 +139,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 # For main static file not tied up to app and in base_dir/Required for base.css so django will look here too
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # This will add the file to the media folder and not to another url
 MEDIA_URL = "/media/"
