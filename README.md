@@ -3,13 +3,15 @@ Test Program for using nginx and gunicorm with local setup
 ## Commands and Explantion
 
 sudo nginx -t : check nginx syntax for errors
-sudo nginx start: start nginx server using config
-sudo ngoinx stop: stop server
+sudo service nginx start: start nginx server using config
+sudo service nginx stop: stop server
 sudo service nginx restart: retart server
 
 
 gunicorn django_pos.wsgi:application -b :8001 : start gunicorn server on post 8001 using gunicorn as reverse proxy
 sudo nano  /etc/nginx/sites-enabled/example:  create nginx config file in folder
+
+pkill gunicorn : kill gunicorn server
 
 configuration: 
 
