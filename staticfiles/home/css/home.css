@@ -1,0 +1,87 @@
+a {
+    text-decoration: none;
+}
+.till-screen {
+    background: white;
+    min-height: 80vh;
+}
+
+.product-screen {
+    background: rgb(206, 206, 206);
+    min-height: 80vh;
+}
+
+.product-description {
+    position: relative;
+    bottom: 24px;
+    margin-bottom: -10px;
+}
+
+.product-icon img {
+    width: 100%;
+}
+
+.search.form-control {
+    height: 34px;
+}
+
+.bg-custom {
+    background: rgba(111, 101, 252, 0.774);
+}
+
+.bg-custom-price {
+    background: rgba(0, 0, 0, 0.521);
+}
+
+.bg-custom-dropdown {
+    background: rgba(111, 101, 252, 0.918);
+}
+
+.product-icon:hover {
+    opacity: 0.7;
+}
+
+.product-add-modal {
+    top: 30%;
+    left: 25%;
+    height: auto;
+    width: 50%;
+    background: rgba(128, 167, 250, 0.849);
+}
+
+.modal-dialog {
+    pointer-events: all;
+}
+
+.till-text {
+    font-size: 14px;
+}
+
+.btn-custom-2 {
+    background: rgba(0, 193, 151, 0.815);
+}
+
+.btn-custom-2:hover {
+    background: rgba(0, 193, 151, 0.651);
+}
+
+.bg-custom-3 {
+    background: rgb(240, 195, 38)
+}
+
+.pay-input {
+    height: 38px;
+}
+
+@media screen and (max-width: 768px){
+    .product-add-modal {
+        width: 60%;
+        left: 20%;
+}
+
+@media screen and (max-width: 576px){
+    .product-add-modal {
+        width: 90%;
+        left: 5%;
+}
+

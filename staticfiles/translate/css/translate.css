@@ -1,0 +1,17 @@
+.content {
+    background-image: linear-gradient(to bottom, rgb(120, 253, 160) , rgb(187, 183, 250));
+}
+
+.form-control {
+    height: 36px;
+}
+
+.language-form {
+    width: 50%;
+}
+
+@media screen and (max-width: 576px){
+    .language-form {
+        width: 90%;
+    }
+}

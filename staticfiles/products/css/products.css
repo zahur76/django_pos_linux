@@ -1,0 +1,120 @@
+.content {
+    background-image: linear-gradient(to bottom, rgb(187, 183, 250) , rgb(228, 226, 247));
+}
+
+.add-category-form-input {
+    width: 50%;
+}
+
+.add-category-button {
+    width: 50%;
+}
+
+.add-category-modal {
+    width: 50%;
+    left: 25%;
+    top: 30%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.add-subcategory:hover {
+    color: rgb(99, 99, 99) !important;
+}
+
+.modal-content {
+    background: rgb(240, 240, 240);
+    border: 1px solid rgb(197, 197, 197) !important;
+    border-radius: 0;
+}
+
+.box {
+    background: rgb(108, 108, 245);
+    color: white;
+    padding: 5px !important;
+}
+
+.bg-products {
+    background:rgb(240, 239, 239);
+}
+
+.form-control {
+    height: 34px;
+}
+
+.add-product-button:hover {
+    color: rgb(133, 133, 133) !important;
+}
+
+/* product-form */
+.add-product-form {
+    width: 30%;
+}
+
+.subcategory-field-input {
+    height: 34px;
+}
+
+.bg-product-form {
+    border: 1px solid white !important;
+}
+
+/* product image */
+
+img {
+    width: 50px;
+}
+
+@media screen and (min-width: 992px){
+    .product-form {
+        width: 35% !important;
+    }
+}
+
+/* add product model */
+
+.modal {
+    background: red !important;
+}
+
+
+@media screen and (max-width: 992px){
+    .product-form {
+        width: 35% !important;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .product-form {
+        width: 50% !important;
+    }
+
+    .add-product-form {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .add-category-form-input {
+        width: 75%;
+    }
+
+    .add-category-button {
+        width: 75%;
+    }
+
+    .add-product-form {
+        width: 90%;
+    }
+    
+    .add-category-modal {
+        width: 75%;
+        left: 12.5%;
+    }
+
+    .product-form {
+        width: 90% !important;
+    }
+}

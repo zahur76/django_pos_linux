@@ -1,0 +1,31 @@
+
+
+.admin-box {
+    background: rgb(108, 108, 245);
+    font-weight: 400;
+    font-size: 28px;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(189, 189, 189);
+}
+
+div a {
+    text-decoration: none;
+}
+
+.admin-box:hover {
+    background: rgb(132, 132, 245);
+}
+
+
+@media screen and (max-width: 768px){
+    .admin-box {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .admin-box {
+        font-size: 14px;
+        padding: 10px !important;
+    }
+}
